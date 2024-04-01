@@ -1,12 +1,12 @@
 pipeline {
   agent any
   stages {
-    stage('version') {
+    stage('hello') {
       steps {
         sh 'python3 app.py'
       }
     }
-    stage('hello') {
+    stage('unit_test') {
       steps {
         sh 'python3 website_tets-.py'
       }
