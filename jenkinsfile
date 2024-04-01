@@ -4,8 +4,11 @@ pipeline {
     stage('Setup') {
       steps {
         script {
+          // Create and activate virtual environment
+          sh 'python3 -m venv venv'
+          sh '. venv/bin/activate'
           // Install Flask module
-          sh 'pip3 install flask'
+          sh 'pip install flask'
         }
       }
     }
