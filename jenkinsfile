@@ -4,6 +4,9 @@ pipeline {
     stage('Setup') {
       steps {
         script {
+          // Install python3-venv package
+          sh 'sudo apt update'
+          sh 'sudo apt install -y python3-venv'
           // Create and activate virtual environment
           sh 'python3 -m venv venv'
           sh '. venv/bin/activate'
