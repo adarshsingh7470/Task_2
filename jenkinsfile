@@ -1,15 +1,24 @@
 pipeline {
   agent any
   stages {
-    stage('hello') {
+    stage('Setup') {
+      steps {
+        script {
+          // Install Flask module
+          sh 'pip3 install flask'
+        }
+      }
+    }
+    stage('Run Application') {
       steps {
         sh 'python3 app.py'
       }
     }
-    stage('unit_test') {
+    stage('Run Website Tests') {
       steps {
-        sh 'python3 website_tets-.py'
+        sh 'python3 website_test-.py'
       }
     }
+    // Add more stages as needed
   }
 }
