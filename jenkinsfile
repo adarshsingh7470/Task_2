@@ -14,7 +14,7 @@ pipeline {
                     // Create virtual environment
                     sh "python3 -m venv ${VIRTUAL_ENV}"
                     // Activate virtual environment
-                    sh "${VIRTUAL_ENV}/bin/activate"
+                    sh "source ${VIRTUAL_ENV}/bin/activate"
                     // Install Flask module
                     sh 'pip install flask'
                 }
