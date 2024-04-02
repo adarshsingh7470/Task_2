@@ -11,9 +11,10 @@ pipeline {
                     // Update package lists and install python3-venv with sudo
                     sh 'sudo apt update'
                     sh 'sudo apt install -y python3-venv'
-                    // Create and activate virtual environment
+                    // Create virtual environment
                     sh "python3 -m venv ${VIRTUAL_ENV}"
-                    sh "source ${VIRTUAL_ENV}/bin/activate"
+                    // Activate virtual environment
+                    sh "${VIRTUAL_ENV}/bin/activate"
                     // Install Flask module
                     sh 'pip install flask'
                 }
@@ -22,8 +23,6 @@ pipeline {
         stage('Run Application') {
             steps {
                 script {
-                    // Activate virtual environment
-                    sh "source ${VIRTUAL_ENV}/bin/activate"
                     // Run the application
                     sh 'python3 app.py'
                 }
@@ -32,8 +31,6 @@ pipeline {
         stage('Run Website Tests') {
             steps {
                 script {
-                    // Activate virtual environment
-                    sh "source ${VIRTUAL_ENV}/bin/activate"
                     // Run website tests
                     sh 'python3 website_test-.py'
                 }
