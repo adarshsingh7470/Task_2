@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     // Run the application
-                    sh 'python3 website_test-.py'
+                    sh 'python3 website_tets-.py'
                 }
             }
         }
