@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     // Run the application
-                    sh 'python3 app.py'
+                    sh 'python3 website_test-.py'
                 }
             }
         }
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     // Run website tests
-                    sh 'python3 website_test-.py'
+                    sh 'python3 app.py'
                 }
             }
         }
