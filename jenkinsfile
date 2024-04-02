@@ -17,12 +17,12 @@ pipeline {
         }
         stage('Run Application') {
             steps {
-                sh 'python3 app.py'
+                sh 'python3 website_tets-.py'
             }
         }
         stage('Run Website Tests') {
             steps {
-                sh 'python3 website_test-.py'
+                sh 'python3 app.py'
             }
         }
         // Add more stages as needed
