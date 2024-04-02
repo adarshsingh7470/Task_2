@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    environment {
-        VIRTUAL_ENV = "${WORKSPACE}/venv"
-        PATH = "${VIRTUAL_ENV}/bin:${PATH}"
-    }
     stages {
         stage('Setup') {
             steps {
@@ -11,29 +7,22 @@ pipeline {
                     // Update package lists and install python3-venv with sudo
                     sh 'sudo apt update'
                     sh 'sudo apt install -y python3-venv'
-                    // Create virtual environment
-                    sh "python3 -m venv ${VIRTUAL_ENV}"
-                    // Activate virtual environment
-                    sh ". ${VIRTUAL_ENV}/bin/activate"
-                    // Install Flask module
-                    sh 'pip install flask'
+                    // Create and activate virtual environment
+                    sh 'python3 -m venv venv'
+                    sh '. venv/bin/activate'
+                    // Install Flask and requests module
+                    sh 'pip install flask requests'
                 }
             }
         }
         stage('Run Application') {
             steps {
-                script {
-                    // Run the application
-                    sh 'python3 website_tets-.py'
-                }
+                sh 'python3 app.py'
             }
         }
         stage('Run Website Tests') {
             steps {
-                script {
-                    // Run website tests
-                    sh 'python3 app.py'
-                }
+                sh 'python3 website_test-.py'
             }
         }
         // Add more stages as needed
